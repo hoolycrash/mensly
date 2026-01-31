@@ -1,0 +1,365 @@
+mapboxgl.accessToken = 'pk.eyJ1IjoiZmVsaXhuaWV0em9sZCIsImEiOiJjbWwxOG10aDMwMG14M21zZGF6aW0zZnJxIn0.7fWvJFXF488scKloTI9CJA';
+
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    const mapStyle = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches 
+        ? 'dusk'
+        : ''; 
+
+    const map = new mapboxgl.Map({
+        container: 'map', 
+        style: 'mapbox://styles/mapbox/standard', 
+        config: {
+            basemap: {
+                lightPreset: mapStyle,
+                font: "Roboto",
+                showPointOfInterestLabels: false,
+                fuelingStationModePointOfInterestLabels: "none",
+            }
+        },
+        center: [13.7373, 51.0504],
+        zoom: 12 
+    });
+
+
+    const locations = [
+    { 
+        "id": "4",
+        "name": "Alte Mensa", 
+        "city": "Dresden", 
+        "adress": "Mommsenstr. 13, 01069 Dresden",
+        "lat": 51.026913603999965, 
+        "lng": 13.726503918744427, 
+        "image": "//static.studentenwerk-dresden.de/mensen/mensen-cafeterien-aussenansichten/alte-mensa.jpg",
+        "seats": "1.000 in 4 Mensasälen<br>100 in Cafeteria<br>250 auf drei Terrassen",
+        "hours": "Mo - Fr 08:00 - 17:00",
+        "cafeteria": "Mo - Fr 08:00 - 17:00",
+        "lunchhours": "Mo - Do 10:45 - 14:45 <br> Fr 10:45 - 14:15",
+        "stars": "4,5",
+        "website": "https://www.studentenwerk-dresden.de/mensen/details-alte-mensa.html"
+    },
+    { 
+        "id": "6",
+        "name": "Matrix", 
+        "city": "Dresden", 
+        "adress": "Reichenbachstr. 1, 01069 Dresden",
+        "lat": 51.03431627908361, 
+        "lng": 13.734017791238585, 
+        "image": "//static.studentenwerk-dresden.de/mensen/mensen-cafeterien-aussenansichten/mensa-matrix.jpg",
+        "seats": "144 im EG mit 56 Außenplätzen<br>120 im 1. OG mit 72 Außenplätzen",
+        "hours": "Mo - Fr 10:45 - 14:30",
+        "lunchhours": "Mo - Fr 10:45 - 14:00",
+        "stars": "4,3",
+        "website": "https://www.studentenwerk-dresden.de/mensen/details-mensa-matrix.html"
+    },
+    { 
+        "id": "8",
+        "name": "Mensologie", 
+        "city": "Dresden", 
+        "adress": "Blasewitzer Str. 84, 01307 Dresden",
+        "lat": 51.05275264225499, 
+        "lng": 13.784290087714286, 
+        "image": "//static.studentenwerk-dresden.de/mensen/mensen-cafeterien-aussenansichten/mensologie.jpg",
+        "seats": "300 im Mensasal<br>200 in Mehrzweckräumen<br>120 auf den Terrassen",
+        "hours": "Mo - Fr 11:00 - 14:15",
+        "lunchhours": "Mo - Fr 11:00 - 14:00",
+        "stars": "4,3",
+        "website": "https://www.studentenwerk-dresden.de/mensen/details-mensologie.html"
+    },
+    { 
+        "id": "9",
+        "name": "Siedepunkt", 
+        "city": "Dresden", 
+        "adress": "Zellescher Weg 17, 01069 Dresden",
+        "lat": 51.029628900923406, 
+        "lng": 13.738641391043707, 
+        "image": "//static.studentenwerk-dresden.de/mensen/mensen-cafeterien-aussenansichten/mensa-siedepunkt.jpg",
+        "seats": "280 im Innenraum<br>60 im Außenbereich",
+        "hours": "Mo - Fr 11:00 - 15:00",
+        "lunchhours": "Mo - Fr 11:00 - 14:30",
+        "nighthours": "Mo - Fr 17:30 - 19:45",
+        "stars": "3,9",
+        "website": "https://www.studentenwerk-dresden.de/mensen/details-mensa-siedepunkt.html"
+    },
+    { 
+        "id": "10",
+        "name": "TellerRandt", 
+        "city": "Tharandt", 
+        "adress": "Pienner Straße 15, 01737 Tharandt",
+        "lat": 50.98063368314987, 
+        "lng": 13.581183478693543, 
+        "image": "//static.studentenwerk-dresden.de/mensen/header/mensa-tellerrandt.jpg",
+        "seats": "140",
+        "hours": "Mo - Fr 11:00 - 14:00",
+        "lunchhours": "Mo - Fr 11:00 - 13:30",
+        "stars": "4,1",
+        "website": "https://www.studentenwerk-dresden.de/mensen/details-mensa-tellerrandt.html"
+    },
+    { 
+        "id": "11",
+        "name": "Palucca-Hochschule", 
+        "city": "Dresden", 
+        "adress": "Basteiplatz 4, 01277 Dresden",
+        "lat": 51.028954580817704, 
+        "lng": 13.770944821637194, 
+        "image": "//static.studentenwerk-dresden.de/mensen/mensen-cafeterien-aussenansichten/mensa-palucca-hochschule.jpg",
+        "seats": "72",
+        "hours": "Mo - Do 09:00 - 17:00<br>Fr 09:00 - 14:00",
+        "lunchhours": "Mo - Do 10:45 - 14:15<br>Fr 10:45 - 14:00",
+        "cafeteria": "Mo - Do 09:00 - 17:00<br>Fr 09:00 - 14:00",
+        "stars": "4,0",
+        "website": "https://www.studentenwerk-dresden.de/mensen/details-mensa-palucca-hochschule.html"
+    },
+    { 
+        "id": "13",
+        "name": "Stimm-Gabel", 
+        "city": "Dresden", 
+        "adress": "Wettiner Platz 13, 01067 Dresden",
+        "lat": 51.05383469772614, 
+        "lng": 13.724758473754921, 
+        "image": "//static.studentenwerk-dresden.de/mensen/header/mensa-stimm-gabel.jpg",
+        "seats": "99",
+        "hours": "Mo - Do 09:00 - 15:00<br>Fr 09:00 - 17:00",
+        "lunchhours": "Mo - Fr 11:00 - 14:00",
+        "stars": "4,1",
+        "website": "https://www.studentenwerk-dresden.de/mensen/details-mensa-tellerrandt.html"
+    },
+    { 
+        "id": "24",
+        "name": "Kraatschn", 
+        "city": "Zittau", 
+        "adress": "Hochwaldstr. 12, 02763 Zittau",
+        "lat": 50.890476628644045, 
+        "lng": 14.804346058894861, 
+        "image": "//static.studentenwerk-dresden.de/mensen/mensen-cafeterien-aussenansichten/mensa-kraatschn.jpg",
+        "seats": "300 im Innenraum<br>24 im Innenhof<br>48 vor der Mensa",
+        "hours": "Mo - Fr 11:00 - 14:00",
+        "lunchhours": "Mo - Fr 11:00 - 14:00",
+        "stars": "4,4",
+        "website": "https://www.studentenwerk-dresden.de/mensen/details-mensa-kraatschn.html"
+    },
+    { 
+        "id": "25",
+        "name": "Mahlwerk", 
+        "city": "Zittau", 
+        "adress": "Schwenninger Weg 1, 02763 Zittau",
+        "lat": 50.88408543581099, 
+        "lng": 14.801730989442278, 
+        "image": "//static.studentenwerk-dresden.de/mensen/mensen-cafeterien-aussenansichten/mensa-mahlwerk.jpg",
+        "seats": "60",
+        "hours": "Mo - Fr 11:30 - 13:00",
+        "lunchhours": "Mo - Fr 11:30 - 13:00",
+        "stars": "5,0",
+        "website": "https://www.studentenwerk-dresden.de/mensen/details-mensa-mahlwerk.html"
+    },
+    { 
+        "id": "28",
+        "name": "MiO - Mensa im Osten", 
+        "city": "Görlitz", 
+        "adress": "Furtstraße 1a, 02826 Görlitz",
+        "lat": 51.149268806426704, 
+        "lng": 14.998678064630527, 
+        "image": "//static.studentenwerk-dresden.de/mensen/header/mio-mensa-im-osten.jpg",
+        "seats": "80",
+        "hours": "Mo - Fr 09:30 - 14:15",
+        "lunchhours": "Mo - Fr 11:00 - 14:15",
+        "stars": "4,3",
+        "website": "https://www.studentenwerk-dresden.de/mensen/details-mio-mensa-im-osten.html"
+    },
+    { 
+        "id": "29",
+        "name": "U-Boot", 
+        "city": "Dresden", 
+        "adress": "George-Bähr-Straße/Hettnerstraße 3,01069 Dresden",
+        "lat": 51.03038930534982, 
+        "lng": 13.729360882167413, 
+        "image": "//static.studentenwerk-dresden.de/mensen/mensen-cafeterien-aussenansichten/u-boot.jpg",
+        "seats": "60",
+        "hours": "Mo - Fr 11:00 - 14:00",
+        "lunchhours": "Mo - Fr 11:00 - 14:00",
+        "stars": "4,5",
+        "website": "https://www.studentenwerk-dresden.de/mensen/details-u-boot.html"
+    },
+    { 
+        "id": "32",
+        "name": "Johanna", 
+        "city": "Dresden", 
+        "adress": "Marschnerstraße 38, 01307 Dresden",
+        "lat": 51.053150949520855, 
+        "lng": 13.760688463661657, 
+        "image": "//static.studentenwerk-dresden.de/mensen/header/mensa-johanna.jpg",
+        "seats": "225 in der Mensa<br>42 in der Loggia",
+        "hours": "Mo - Fr 10:00 - 14:15",
+        "lunchhours": "Mo - Fr 11:00 - 14:00",
+        "stars": "4,3",
+        "website": "https://www.studentenwerk-dresden.de/mensen/details-mensa-johanna.html"
+    },
+    { 
+        "id": "33",
+        "name": "WUeins", 
+        "city": "Dresden", 
+        "adress": "Wundtstraße 1, 01217 Dresden",
+        "lat": 51.030008429927435, 
+        "lng": 13.749041728851282, 
+        "image": "//static.studentenwerk-dresden.de/mensen/mensen-cafeterien-aussenansichten/mensa-wueins.jpg",
+        "seats": "70 im Innenraum<br>48 auf der Terasse",
+        "hours": "Mo - Fr 08:00 - 16:00",
+        "lunchhours": "Mo - Fr 11:00 - 14:00",
+        "stars": "4,4",
+        "website": "https://www.studentenwerk-dresden.de/mensen/details-mensa-wueins.html"
+    },
+    { 
+        "id": "34",
+        "name": "Brühl", 
+        "city": "Dresden", 
+        "adress": "Brühlsche Terrasse 1, 01067 Dresden",
+        "lat": 51.053104185033725, 
+        "lng": 13.741934103615053, 
+        "image": "//static.studentenwerk-dresden.de/mensen/mensen-cafeterien-aussenansichten/mensa-bruehl.jpg",
+        "seats": "90 inkl. Terasse",
+        "hours": "Mo - Fr 10:30 - 15:00",
+        "lunchhours": "Mo - Fr 11:30 - 14:30",
+        "stars": "4,4",
+        "website": "https://www.studentenwerk-dresden.de/mensen/details-mensa-bruehl.html"
+    },
+    { 
+        "id": "35",
+        "name": "Zeltschlösschen", 
+        "city": "Dresden", 
+        "adress": "Nürnberger Straße 55, 01187 Dresden",
+        "lat": 51.0316380950883, 
+        "lng": 13.728625553160747, 
+        "image": "//static.studentenwerk-dresden.de/mensen/mensen-cafeterien-aussenansichten/zeltschloesschen.jpg",
+        "seats": "700 und Terasse",
+        "hours": "Mo - Fr 08:00 - 15:30",
+        "lunchhours": "Mo - Fr 11:00 - 15:00",
+        "kaffelounge": "Mo - Fr 08:00 - 15:00",
+        "stars": "4,3",
+        "website": "https://www.studentenwerk-dresden.de/mensen/details-zeltschloesschen.html"
+    },
+    { 
+        "id": "xx",
+        "name": "Neue Mensa", 
+        "city": "Dresden", 
+        "adress": "Bergstraße 51, 01069 Dresden",
+        "lat": 51.02900165498591, 
+        "lng": 13.731776836305654, 
+        "image": "//static.studentenwerk-dresden.de/mensen/header/neue-mensa.jpg",
+        "info": "Auf Grund von Sanierungsarbeiten geschlossen. Bitte nutze das Interimsangebot in der Mensa Zeltschlösschen.",
+        "seats": "",
+        "hours": "Vorrübergehend geschlossen",
+        "lunchhours": "",
+        "stars": "4,8",
+        "website": "https://www.studentenwerk-dresden.de/mensen/details-neue-mensa.html"
+    },
+    ];
+
+    const detailContent = document.getElementById('mensaDetails');
+    const detailOverlay = document.getElementById('detailOverlay');
+
+
+
+    locations.forEach(mensa => {
+        const marker = new mapboxgl.Marker({ color: '#5ca21c' })
+            .setLngLat([mensa.lng, mensa.lat])
+            .addTo(map);
+
+        marker.getElement().addEventListener('click', async () => {
+            detailContent.innerHTML = '<div class="loading">Lade Speiseplan...</div>';
+            
+            const imageUrl = !mensa.image.includes("studentenwerk-dresden-lieber-mensen-gehen.jpg") ? mensa.image.trim() : "";
+
+            let htmlHeader = `
+                <div class="popupimage" style="background-image: url('https:${imageUrl}')">
+                    <b class="accent">${mensa.city}</b>
+                    <h2>${mensa.name}</h2>
+                    <p>${mensa.adress}</p>
+                    <span class="chip">&nbsp;★ ${mensa.stars}&nbsp;</span>
+                </div>
+            `;
+
+            let htmlMeals = `<div class="meal-container mappadding">`;
+
+            try {
+                const isPersonal = localStorage.getItem("priceswitch") === "true";
+                const isImageblock = localStorage.getItem("imageswitch") === "true";
+                const isSouldoutblock = localStorage.getItem("souldoutswitch") === "true";
+                const isVeganonly = localStorage.getItem("veganswitch") === "true";
+                const date = new Date().toISOString().split('T')[0];
+
+                const response = await fetch(`https://api.studentenwerk-dresden.de/openmensa/v2/canteens/${mensa.id}/days/${date}/meals`);
+                const meals = await response.json();
+
+                if (!meals || meals.length === 0) {
+                    htmlMeals = "";
+                } else {
+                    meals.forEach(meal => {
+                        const cleanName = meal.name.replace(/\s*\([^)]*\)/g, "");
+                        const isVegan = meal.notes.some(n => n.toLowerCase().includes("vegan") || n.toLowerCase().includes("vegan"));
+                        const isVeggie = meal.notes.some(n => n.toLowerCase().includes("veggie") || n.toLowerCase().includes("vegetarisch"));
+                        const isPig = meal.notes.some(n => n.toLowerCase().includes("schweinefleisch") || n.toLowerCase().includes("schweinefleisch"));
+                        const isCow = meal.notes.some(n => n.toLowerCase().includes("rindfleisch") || n.toLowerCase().includes("rindfleisch"));
+                        const isFish = meal.notes.some(n => n.toLowerCase().includes("fisch"));
+                        const isGeflugel = meal.name.toLowerCase().includes("geflügel") || meal.name.toLowerCase().includes("ente") || meal.name.toLowerCase().includes("pute") || meal.name.toLowerCase().includes("Hähnchen");
+                        const isSoldout = meal.soldout;
+
+                        const mealData = encodeURIComponent(JSON.stringify(meal));
+
+                        if (isSoldout && isSouldoutblock) return
+                        if (isVeganonly && !isVegan) return
+
+                        htmlMeals += `
+                            <div class="meal ${isSoldout ? 'AUSVERKAUFT' : ''}" onclick="showDetails('${mealData}')">
+                                <span class="chip">&nbsp;${(meal.category.includes("Abendangebot") ? "Abendangebot" : meal.category)}&nbsp;</span><br><br>
+                                <b>${cleanName.replace(/\s*( mit| aus| auf| an| dazu).*/i, "").trim()}</b><br>
+                                ${(cleanName.match(/\b(?:mit|aus|auf|an|dazu)\s+(.*)/i) || ["", ""])[1].trim()} <br>
+                                <div class="badgebox">
+                                    ${isVeggie ? '<img src="./assets/icons/veggie.svg" class="badge">' : ''}
+                                    ${isPig ? '<img src="./assets/icons/pig.svg" class="badge">' : ''}
+                                    ${isCow ? '<img src="./assets/icons/cow.svg" class="badge">' : ''}
+                                    ${isVegan ? '<img src="./assets/icons/vegan.svg" class="badge">' : ''}
+                                    ${isFish ? '<img src="./assets/icons/fish.svg" class="badge">' : ''}
+                                    ${isGeflugel ? '<img src="./assets/icons/geflugel.svg" class="badge">' : ''}
+                                </div>
+                                    
+                                ${!meal.image.includes("studentenwerk-dresden-lieber-mensen-gehen.jpg") 
+                                    ? `<br><br><br><img src="https:${isImageblock ? "//mensly.unibits.eu/none.png": meal.image.trim()}" class="mealimage">` 
+                                    : ""}
+                                <br><br><br>
+                                <div class="price">
+                                    <div class="pricetag ${isSoldout ? 'AUSVERKAUFT' : ''}">
+                                        ${isSoldout ? '<small>AUSVERKAUFT</small><br>' : ''}
+                                        ${isSoldout ? '<s>' : ''}${isPersonal ? meal.prices.Bedienstete.toFixed(2) : meal.prices.Studierende.toFixed(2)}€${isSoldout ? '</s>' : ''}<br>
+                                        <small>${isPersonal ? "Personal" : "Studi"}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                }
+            } catch (err) {
+                htmlMeals = "";
+            }
+            htmlMeals += `</div>`;
+
+            let htmlDetails = `
+                <div class="popupcontent">
+                    ${mensa.info ? "<small>Information</small><br>" + mensa.info + "<hr>" : ""}
+                    <small>Öffnungszeiten</small><br>${mensa.hours}<hr>
+                    ${mensa.lunchhours ? "<small>Mittagstisch</small><br>" + mensa.lunchhours + "<hr>" : ""}
+                    ${mensa.seats ? "<small>Sitzplätze</small><br>" + mensa.seats + "<hr>" : ""}
+                    <small>Website</small><br><a href="${mensa.website}" class="green" target="_blank">Studentenwerk Dresden</a>
+                </div>`;
+
+            detailContent.innerHTML = htmlHeader + htmlMeals + htmlDetails;
+            detailOverlay.classList.remove('hidden');
+            detailOverlay.classList.remove('closehidden');
+        });
+        
+    });
+
+    map.addControl(new mapboxgl.NavigationControl());
+
+    detailOverlay.addEventListener('click', (e) => { if(e.target === detailOverlay) closeDetails(); });
+
+    function closeDetails() { detailOverlay.classList.add('closehidden'); }
