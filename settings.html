@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <meta name="apple-mobile-web-app-title" content="Mensly">
+
+    <title>Mensly</title>
+
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/dark_styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu_book_2,near_me,settings" rel="stylesheet" />
+    <link rel="manifest" href="manifest.json" type="application/json">
+
+    <script>let thissite = 'Einstellungen';</script>
+    <script src="./assets/src/menu.js"></script>
+    <script src="./assets/src/workers.js"></script>
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Speisepläne und Mensafinder - Dresden - Mensly">
+    <meta property="og:description" content="Speisepläne und Mensafinder. Interaktive Zusammenstellung aller Speisepläne der Mensen des Studentenwerk Dresdens.">
+    <meta property="og:image" content="https://mensly.unibits.eu/assets/branding/icon-512x512.png">
+    <meta property="og:url" content="https://mensly.unibits.eu">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Speisepläne und Mensafinder - Dresden - Mensly">
+    <meta name="twitter:description" content="Speisepläne und Mensafinder. Interaktive Zusammenstellung aller Speisepläne der Mensen des Studentenwerk Dresdens.">
+    <meta name="twitter:image" content="https://mensly.unibits.eu/assets/branding/bigbanner.png">
+    <meta name="twitter:url" content="https://mensly.unibits.eu">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Schema.org Markup -->
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "WebSite",
+            "name": "Mensly",
+            "url": "https://mensly.unibits.eu",
+            "description": "Speisepläne und Mensafinder für Dresden",
+        }
+    </script>
+</head>
+<body>
+
+    <div class="nav-rail" id="navrail"></div>
+
+    <center>
+    
+        <div class="content smallcontent">
+
+            <br>
+
+            <table>
+                <tr>
+                    <td>
+                        <h2 id="#Timeline">Einstellungen</h2>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </table>
+        
+            <div class="listcontainer">
+
+                <div class="listitem listswicthitem">
+                    <div class="switchitemtext">Preise für Personal bevorzugen</div>
+                    <div class="listitemswitch">
+                        <div class="switchbox-container">
+                            <label class="onoffswitch">
+                                <input type="checkbox" id="price-switch">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="listitem listswicthitem">
+                    <div class="switchitemtext">Menüfotos ausblenden</div>
+                    <div class="listitemswitch">
+                        <div class="switchbox-container">
+                            <label class="onoffswitch">
+                                <input type="checkbox" id="image-switch">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="listitem listswicthitem">
+                    <div class="switchitemtext">Ausverkaufte ausblenden</div>
+                    <div class="listitemswitch">
+                        <div class="switchbox-container">
+                            <label class="onoffswitch">
+                                <input type="checkbox" id="soldout-switch">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="listitem listswicthitem">
+                    <div class="switchitemtext">Nur pflanzliche Gerichte anzeigen</div>
+                    <div class="listitemswitch">
+                        <div class="switchbox-container">
+                            <label class="onoffswitch">
+                                <input type="checkbox" id="vegan-switch">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <br>
+
+            <h2>Legende</h2>
+            <div class="listcontainer">
+                <div class="listitem">
+                    <div class="listimagecontainer"><img src="./assets/icons/vegan.svg"></div>
+                    <div class="listitemtext">
+                        Vegan
+                    </div>
+                </div>
+                <div class="listitem">
+                    <div class="listimagecontainer"><img src="./assets/icons/veggie.svg"></div>
+                    <div class="listitemtext">
+                        Vegetarisch
+                    </div>
+                </div>
+                <div class="listitem">
+                    <div class="listimagecontainer"><img src="./assets/icons/cow.svg"></div>
+                    <div class="listitemtext">
+                        Enthält Rindfleisch
+                    </div>
+                </div>
+                <div class="listitem">
+                    <div class="listimagecontainer"><img src="./assets/icons/pig.svg"></div>
+                    <div class="listitemtext">
+                        Enthält Schweinefleisch
+                    </div>
+                </div>
+                <div class="listitem">
+                    <div class="listimagecontainer"><img src="./assets/icons/geflugel.svg"></div>
+                    <div class="listitemtext">
+                        Enthält Geflügelfleisch
+                    </div>
+                </div>
+                <div class="listitem">
+                    <div class="listimagecontainer"><img src="./assets/icons/fish.svg"></div>
+                    <div class="listitemtext">
+                        Enthält Fisch
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <h2>About</h2>
+            <div class="listcontainer">
+                <div class="listitem">
+                    <div class="listimagecontainer"><img src="./assets/appicons/icon-512x512.png"></div>
+                    <div class="listitemtext">
+                        <b>Mensly Preview</b><br>
+                        Version 0.5 gehosted auf unibits.
+                    </div>
+                </div>
+
+                <div class="listitem">
+                    <div class="listimagecontainer"><img src="./assets/icons/sw.svg"></div>
+                    <div class="listitemtext">
+                        Speisepläne bereitgestellt von:<br>
+                        <a href="https://www.studentenwerk-dresden.de/mensen/speiseplan-api.html" class="green">Studentenwerk Dresden</a>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <h2>Lizenzen</h2>
+            <div class="listcontainer">
+
+                <div class="listitem">
+                    <div class="listimagecontainer">
+                        <img src="./assets/icons/license.svg" class="adaptiveicon">
+                    </div>
+                    <div class="listitemtext">
+                        <b>Mapbox Web SDK</b><br>
+                        <small class="disabled">Individual License</small>
+                    </div>
+                    <div>
+                        <a href="./assets/licenses/MAPBOX_LICENSE.txt"><small class="disabled"><u>Ansehen</u></small></a>
+                        <a href="https://github.com/mapbox/mapbox-gl-js/blob/main/LICENSE.txt"><small class="disabled"><u>Quelle</u></small></a>
+                    </div>
+                </div>
+
+		        <div class="listitem">
+                    <div class="listimagecontainer">
+                        <img src="./assets/icons/license.svg" class="adaptiveicon">
+                    </div>
+                    <div class="listitemtext">
+                        <b>Material Design Icons</b><br>
+                        <small class="disabled">Apache License 2.0</small>
+                    </div>
+                    <div>
+                        <a href="./assets/licenses/MATERIALICONS_LICENSE.txt"><small class="disabled"><u>Ansehen</u></small></a>
+                        <a href="https://github.com/google/material-design-icons/blob/master/LICENSE"><small class="disabled"><u>Quelle</u></small></a>
+                    </div>
+                </div>
+
+                <div class="listitem">
+                    <div class="listimagecontainer">
+                        <img src="./assets/icons/license.svg" class="adaptiveicon">
+                    </div>
+                    <div class="listitemtext">
+                        <b>Roboto</b><br>
+                        <small class="disabled">Apache License 2.0</small>
+                    </div>
+                    <div>
+                        <a href="./assets/licenses/ROBOTO_LICENSE.txt"><small class="disabled"><u>Ansehen</u></small></a>
+                        <a href="https://github.com/googlefonts/roboto-2/blob/main/LICENSE"><small class="disabled"><u>Quelle</u></small></a>
+                    </div>
+                </div>
+
+            </div>
+
+            <br><br><br><br><br>
+
+        </div>
+
+    </center>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+    const switches = [
+		{ id: 'price-switch', storageKey: 'priceswitch', defaultState: false },
+        { id: 'image-switch', storageKey: 'imageswitch', defaultState: false },
+        { id: 'soldout-switch', storageKey: 'souldoutswitch', defaultState: false },
+        { id: 'vegan-switch', storageKey: 'veganswitch', defaultState: false },
+    ];
+
+    switches.forEach(sw => {
+        const element = document.getElementById(sw.id);
+        
+        const updateSwitchState = () => {
+            const value = element.checked ? "true" : "false";
+            localStorage.setItem(sw.storageKey, value);
+            console.log(`${sw.storageKey} changed to: ${value}`);
+        };
+
+        const storedValue = localStorage.getItem(sw.storageKey);
+        
+        if (storedValue === null) {
+            element.checked = sw.defaultState;
+            localStorage.setItem(sw.storageKey, element.checked ? "true" : "false");
+            console.log(`No stored value for ${sw.storageKey}. Defaulting to: ${sw.defaultState}`);
+        } else {
+            element.checked = storedValue === "true";
+        }
+        
+        element.addEventListener('change', updateSwitchState);
+    });
+
+});
+</script>
+</body>
+</html>

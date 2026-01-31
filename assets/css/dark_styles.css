@@ -1,0 +1,33 @@
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bold: #000000;
+        --background: #0d0d0d;
+        --white: #e7e7e7;
+        --accent: #242424;
+        --accent1: #2e2e2e;
+        --accent-2: #202020;
+        --accent-medium: #999999;
+        --railing-color: #4a4a4a;
+        --color-accent-1: #212917;
+        --color-accent-orange: #232617;
+        --color-accent-purple: #231c25;
+        --boldcolor: #5ca21c;
+        --boldcolor-2: #69a514;
+        --boldcolor-orange: #d88900;
+        --boldcolor-purple: #d91a90;
+    }
+
+    .spinner {
+        filter: invert(1);
+        -webkit-filter: invert(0);
+    }
+
+    @media (prefers-color-scheme: dark) {
+    .adaptiveicon {
+        height: 30px;
+        filter: invert(1);
+        -webkit-filter: invert(1);
+    }
+}
+
+}
