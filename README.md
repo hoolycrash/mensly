@@ -10,7 +10,7 @@ A simple client for Studentenwerk Dresden Speiseplan API.
 ⭐ Canteen favourites  
 🗺️ Map view featuring all canteens with detailed informations  
 ⚙️ Setting page for personal experience  
-📲 WebApp Functionality
+📲 WebApp Functionality  
 🎨 Material 3 inspired design
 
 ## Data Informations
